@@ -4,13 +4,9 @@ machine:
 
 dependencies:
   pre:
-    - sudo apt-get update
-    - git clone git://git.qemu-project.org/qemu.git
-    - cd qemu && ./configure
-    - make
-    - sudo make install
-  override:
+    - sudo cp ./qemu-arm-static /usr/bin/
     - qemu-arm-static -version
+  override:
     - docker info
     - docker run -t --name rpi-mqtt -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static hypriot/rpi-alpine-scratch sh -c 'apk update && apk add mosquitto-clients'
     - docker commit rpi-mqtt philipz/rpi-alpine-mqtt
