@@ -6,6 +6,7 @@ dependencies:
   pre:
     - sudo apt-get update; sudo apt-get install qemu-user-static
   override:
+    - qemu-arm-static -version
     - docker info
     - docker run -t --name rpi-mqtt -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static hypriot/rpi-alpine-scratch sh -c 'apk update && apk add mosquitto-clients'
     - docker commit rpi-mqtt philipz/rpi-alpine-mqtt
