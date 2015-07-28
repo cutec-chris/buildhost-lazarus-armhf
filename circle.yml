@@ -5,6 +5,7 @@ machine:
 dependencies:
   pre:
     - sudo cp ./qemu-arm-static /usr/bin/
+    - sudo cp ./qemu-arm /usr/share/binfmts/
     - qemu-arm-static -version
   override:
     - docker info
