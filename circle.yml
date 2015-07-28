@@ -6,7 +6,8 @@ dependencies:
   pre:
     - sudo apt-get update
     - git clone git://git.qemu-project.org/qemu.git
-    - cd qemu && ./configure && make
+    - cd qemu && ./configure
+    - make
     - sudo make install
   override:
     - qemu-arm-static -version
