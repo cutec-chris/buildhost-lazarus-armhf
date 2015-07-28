@@ -4,6 +4,7 @@ machine:
 
 dependencies:
   pre:
+    - sudo apt-get update; sudo apt-get install qemu-user-static
     - sudo cp ./qemu-arm-static /usr/bin/
     - sudo cp ./qemu-arm /usr/share/binfmts/
     - qemu-arm-static -version
