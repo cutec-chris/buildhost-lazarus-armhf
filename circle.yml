@@ -7,9 +7,9 @@ dependencies:
     - docker info
     - docker build -t philipz/rpi-mysql .
 
-test:
-  override:
-    - docker run -ti --rm philipz/rpi-mysql qemu-arm-static /bin/sh -c 'mysql --version'
+#test:
+#  override:
+#    - docker run -ti --rm philipz/rpi-mysql qemu-arm-static /bin/sh -c 'mysql --version'
 
 deployment:
   hub:
