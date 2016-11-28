@@ -1,5 +1,5 @@
 # Pull base image
-FROM philipz/rpi-raspbian
+FROM resin/rpi-raspbian:jessie
 MAINTAINER philipz <philipzheng@gmail.com>
 
 ENV QEMU_EXECVE 1
@@ -23,7 +23,7 @@ ENV MYSQL_VERSION 5.5
 RUN { \
 		echo mysql-server mysql-server/data-dir select ''; \
 		echo mysql-server mysql-server/root-pass password ''; \
-		echo mysql-server mysql-server/re-root-pass password ''; \
+		echo mysql-server mysql-server/root-pass_again password ''; \
 		echo mysql-server mysql-server/remove-test-db select false; \
 	} | debconf-set-selections \
 	&& apt-get update && apt-get install -y mysql-server="${MYSQL_VERSION}"* && rm -rf /var/lib/apt/lists/* \
