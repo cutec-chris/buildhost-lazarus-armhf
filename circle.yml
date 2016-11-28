@@ -3,20 +3,17 @@ machine:
     - docker
 
 dependencies:
-  pre:
-    - sudo apt-get update
-    - sudo cp ./qemu-arm-static /usr/bin/
-    - sudo cp ./qemu-arm /usr/share/binfmts/
-    - qemu-arm-static -version
   override:
     - docker info
-    - docker pull hypriot/rpi-alpine-scratch
-    - docker run -t --name rpi-mqtt -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static hypriot/rpi-alpine-scratch sh -c 'apk update && apk add mosquitto-clients'
-    - docker commit rpi-mqtt philipz/rpi-alpine-mqtt
+    - docker build -t philipz/rpi-mysql .
+
+test:
+  override:
+    - docker run philipz/rpi-mysql qemu-arm-static /bin/sh -c ' mysql --version'
 
 deployment:
   hub:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push philipz/rpi-alpine-mqtt
+      - docker push philipz/rpi-mysql
