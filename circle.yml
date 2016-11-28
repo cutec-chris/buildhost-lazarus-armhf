@@ -1,6 +1,4 @@
 machine:
-  pre:
-    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   services:
     - docker
 
@@ -11,7 +9,7 @@ dependencies:
 
 test:
   override:
-    - docker run philipz/rpi-mysql qemu-arm-static /bin/sh -c 'mysql --version'
+    - docker run -ti --rm philipz/rpi-mysql qemu-arm-static /bin/sh -c 'mysql --version'
 
 deployment:
   hub:
