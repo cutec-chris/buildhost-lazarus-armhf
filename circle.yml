@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   services:
     - docker
 
@@ -7,9 +9,14 @@ dependencies:
     - docker info
     - docker build -t philipz/rpi-mysql .
 
-#test:
-#  override:
-#    - docker run -ti --rm philipz/rpi-mysql qemu-arm-static /bin/sh -c 'mysql --version'
+test:
+  override:
+    - curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose
+    - chmod +x ./docker-compose
+    - ./docker-compose -v
+    - ./docker-compose up -d
+    - ./docker-compose ps
+    - ./test.sh  
 
 deployment:
   hub:
