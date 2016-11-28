@@ -1,5 +1,5 @@
 # Pull base image
-FROM resin/rpi-raspbian:wheezy
+FROM philipz/rpi-raspbian
 MAINTAINER philipz <philipzheng@gmail.com>
 
 ENV QEMU_EXECVE 1
