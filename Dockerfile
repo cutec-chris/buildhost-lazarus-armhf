@@ -8,8 +8,6 @@ RUN [ "cross-build-start" ]
 
 RUN apt-get update && apt-get install -y bash lazarus git sudo build-essential zip unzip wget libusb-dev libsane-dev sqlite3 postgresql-client binutils psmisc && rm -rf /var/lib/apt/lists/*
 
-VOLUME /var/lib/mysql
-
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
