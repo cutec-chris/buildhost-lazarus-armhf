@@ -13,7 +13,7 @@ RUN cd lazarus && \
     make bigide && \
     make install
   
-COPY enviromentoptions.xml /root/.lazarus/  
+COPY environmentoptions.xml /root/.lazarus/  
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
