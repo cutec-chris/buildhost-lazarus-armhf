@@ -9,9 +9,9 @@ RUN [ "cross-build-start" ]
 RUN apt-get update && apt-get install -y bash git subversion make sudo fpc fpc-source binutils build-essential zip unzip wget libusb-dev libsane-dev sqlite3 postgresql-client binutils libgtk2.0-0 libgtk2.0-dev psmisc && rm -rf /var/lib/apt/lists/*
 
 RUN svn co http://svn.freepascal.org/svn/lazarus/trunk lazarus
-#RUN cd lazarus && \
-#    make bigide && \
-#    make install
+RUN cd lazarus && \
+    make bigide && \
+    make install
   
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
