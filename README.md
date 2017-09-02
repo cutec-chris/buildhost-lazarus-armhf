@@ -1,3 +1,17 @@
-Buildhost for armhf Lazarus Applications
+Lazarus Build VM for Linux armhf
+------------------------------
+ 
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
 
-<a href='http://192.168.177.120:10091/job/buildhost-lazarus-armhf/'><img src='http://192.168.177.120:10091/job/buildhost-lazarus-armhf/badge/icon'></a>
+With this Docker image you can build Lazarus Applications without installing Lazarus or Freepascal
+
+# Installation
+
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/cutec/buildhost-lazarus-armhf/)
+
+# Compiling your Application
+```bash
+docker run -it --rm -v ~/myApp:/root/app cutec/buildhost-lazarus-armhf lazbuild /root/app/myApp.lpi
+```     
