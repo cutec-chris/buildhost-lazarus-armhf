@@ -1,5 +1,5 @@
 # Pull base image
-FROM resin/rpi-raspbian:jessie
+FROM resin/rpi-raspbian:latest
 MAINTAINER philipz <philipzheng@gmail.com>
 
 ENV QEMU_EXECVE 1
